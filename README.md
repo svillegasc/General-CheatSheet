@@ -41,6 +41,12 @@ Lista información de las columnas
 ### Error Based
 ### Blind
 
-## SERVER SITE TEMPLATE INJECTION (SSTI)
+## Server Site Template Injection (SSTI)
+## Server Site Request Forgery (SSRF)
+## Cross Site Request Forgery (CSRF)
+## Cross Site Scripting (XSS)
+### Reflect
+### Store
+### DOM
 
 
