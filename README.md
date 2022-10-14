@@ -15,10 +15,12 @@
 * Permite ver la versión del kernel ``` uname -a ```
 * Permite ajustar el número de filas y columnas de la tty ``` stty rows <ROW_NUMBER> columns <COLUMN_NUMBER> ```
 * Permite convertir hexadecimal a texto ```echo "<HEX>" | xargs | xxd -ps -r ```
-* En el caso de no tener una bash interactiva se puede realizar el siguiente proceso 
-``` script /dev/null -c bash``` o ``` python3 -c 'import pty;pty.spawn("/bin/bash")' ``` luego se debe hacer un **CTRL_Z**
-ingresamos ``` stty raw -echo; fg ``` y por último ingresas ``` reset xterm ``` y consigues una shell interactiva en la máquina.
 * Buscar las capabilities ``` getcap -r / 2>/dev/null ```
+* Ver procesos corriendo (Para este caso se filtra y se muestra los procesos de root) ``` ps aux | grep root ```
+
+### Full TTY
+Te permite tener una consola interactiva
+* [Full TTYs](https://book.hacktricks.xyz/generic-methodologies-and-resources/shells/full-ttys)
 
 ### Python
 * Crear un servidor de python en mi máquina local ``` python3 -m http.server <PORT> ```
