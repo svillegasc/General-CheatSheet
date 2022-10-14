@@ -49,6 +49,13 @@ Se comprueba si existe pkexec instalado y si tiene permisos SUID
 Se debe tener GCC instalado en la máquina a atacar
 * [Dirty Pipe](https://github.com/Arinerron/CVE-2022-0847-DirtyPipe-Exploit)
 
+### Ld_preload & Ld_library_path
+En sudo -l debe aparecer ld_preload
+* [Ld_preload](https://book.hacktricks.xyz/linux-hardening/privilege-escalation#ld_preload-and-ld_library_path)
+
+### SetEnv
+En sudo -l se debe poder ejecutar archivos
+[Set an environment variable](https://book.hacktricks.xyz/linux-hardening/privilege-escalation#setenv)
 
 
 ## Information Disclose
