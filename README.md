@@ -17,6 +17,7 @@
 * Permite convertir hexadecimal a texto ```echo "<HEX>" | xargs | xxd -ps -r ```
 * Buscar las capabilities ``` getcap -r / 2>/dev/null ```
 * Ver procesos corriendo (Para este caso se filtra y se muestra los procesos de root) ``` ps aux | grep root ```
+* Buscar recursivamente en archivos ``` grep -r -i <palabra_clave> ```
 
 ### Full TTY
 Te permite tener una consola interactiva
