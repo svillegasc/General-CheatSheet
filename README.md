@@ -21,6 +21,7 @@
 
 ### Full TTY
 Te permite tener una consola interactiva
+< nc -nvlp \<PORT> & trap "printf '\003' >/proc/$\!/fd/0" INT; fg; trap 0 INT
 * [Full TTYs](https://book.hacktricks.xyz/generic-methodologies-and-resources/shells/full-ttys)
 
 ### Python
