@@ -113,6 +113,9 @@ Lista información de las columnas
 ## NoSQL Injection
 > admin'||''==='
 
+## Extensions
+### PHP
+> phar, phtml, php3, php4, php5
 
 ## Tools
 
