@@ -134,6 +134,25 @@ Abrir una conexión como Client al Server, para este caso asiendo **Remote Port-
 ```
 ./chisel client <CHISEL_SERVER_IP>:<CHISEL_SERVER_PORT> R:<LOCAL_PORT>:<LOCAL_IP>:<LOCAL_PORT>
 ```
+Abrir una conexión como Client al servidor, abriendo tunel socks5 a una nueva red.
+```
+./chisel client <CHISEL_SERVER_IP>:<CHISEL_SERVER_PORT> R:socks
+```
+
+### ProxyChains
+Se usa cuando se van a configurar varios tuneles, tipo esquemas portforwarding
+
+**Importante** -> Se debe editar el archivo proxychains.conf agregando ```127.0.0.1:<PORT>```
+
+Ejemplo
+```
+proxychain nmap -sT -Pn -p- -open --min-rate 5000 -n -vvv <IP> 2>/dev/null
+```
+
+Mejor rendimiento
+```
+seq 1 65535 | xargs -P 500 -I {} proxychain nmap -sT -Pn -p{} -open --min-rate 5000 -n -vvv <IP> 2>&1 | grep "tcp open"
+```
 
 ### SNMP
 #### Onesixtyone
